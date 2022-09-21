@@ -1,0 +1,26 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+
+    <div class="jumbotron text-center">
+        <br>
+        <br>
+        <h1><strong>환영 안합니다!</strong></h1>
+        <h1>Dealivery 퀵 서비스 아닙니다!</h1> <br>
+        <br>
+        <img src="../../static/auctions/img/logo2.png" alt="indeximage" style="height: 200px; width:1000px; left: 400px;"  class="embed-responsive"> <br> <br> <br>
+        <p class="lead" align="center">안녕?</p>
+        <p class="lead" align="center">어쩌고.</p>
+        <p class="lead" align="center">요청을 통해 퀵 서비스를 요청하고 접수를 통해 퀵 서비스를 접수해보세요.</p>
+        <br>
+        
+        
+        {% if user.is_authenticated %}
+            <a href="{% url 'activelisting' %}" class="btn btn btn-outline-primary">올라온 퀵 목록</a>
+            <a href="{% url 'createlisting' %}" class="btn btn-outline-warning">퀵 서비스 요청</a>
+        {% else %}
+            <a href="{% url 'register' %}" class="btn btn btn-outline-primary">회원가입</a>
+            <a href="{% url 'login' %}" class="btn btn-outline-warning">로그인</a>
+        {% endif %}
+    </div>
+{% endblock %}

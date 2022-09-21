@@ -1,0 +1,105 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+
+    {% if message %}
+        <div class="alert alert-{{msg_type}}">{{ message }}</div>
+    {% endif %}
+
+    <div class="jumbotron text-center" style="padding: 3% 10%;">
+
+        <br>
+        <br>
+        <h1><strong>{{product.title}}</strong></h1> <br>
+        <br>
+        <img src="{{product.image_link}}" alt="indeximage" style="height: 350px;" class="embed-responsive"> <br> <br> <br> 
+        <p class="lead" align="justify"><strong>요청사항 : </strong> {{product.description}}</p>
+              <p class="lead" align="justify"><strong>지역 : </strong>{{product.address}}</p>
+        <p class="lead" align="justify"><strong>상세주소 : </strong>{{product.address_detail}}</p>
+            <p class="lead" align="justify"><strong>카테고리 : </strong>{{product.category}}</p>
+        <p class="lead" align="justify"><strong>희망가격 : </strong>{{product.starting_bid}}￦</p>
+        <p class="lead" align="justify"><strong>요청자 : </strong>{{product.seller}}</p>
+        <p class="lead" align="justify"><strong>등록된 시간 : </strong>{{product.created_at}}</p>
+        <br>
+
+        {% if added %}
+            <!-- <input type="button" class="btn btn-danger btn-lg" name="remove" placeholder="Remove from Watchlist"> -->
+            <a href="{% url 'addtowatchlist' product.id %}" class="btn btn-danger btn-lg" name="remove">찜목록에서 지우기</a>
+        {% else %}
+            <!-- <input type="button" class="btn btn-success btn-lg" name="addto" placeholder="Add to Watchlist"> -->
+            <a href="{% url 'addtowatchlist' product.id %}" class="btn btn-outline-success" name="addto">찜목록에 추가하기</a>
+        {% endif %}
+        <br> <br>
+        {% if user.username != product.seller %}
+            <p class="lead" align="justify"><strong>입찰 가격 제시하기 : </strong></p>
+            <form action="{% url 'viewlisting' product.id %}" method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <input class="form-control" type="text" name="newbid" placeholder="입찰 할 금액을 적어주세요">
+                </div>
+                <p align="justify"><input class="btn btn-primary" type="submit" value="보내기"></p>
+            </form>
+        {% endif %}
+        
+
+        <br> <br> <br>
+
+        <!-- Displaying comments-->
+        <div class="jumbotron text-center">
+
+            <!-- Title -->
+            <h2 class="card-title h2">댓글</h2>
+            <!-- Subtitle -->
+            <p class="lead my-4">다른 사용자가 남긴 댓글입니다.</p>
+        
+            {% if comments %}
+
+                {% for comment in comments %}
+                    <br>
+                    <!-- Grid row -->
+                    <div class="card text-left">
+                    <h5 class="card-header h5">{{comment.user}}</h5>
+                    <div class="card-body">
+                        <!-- <h5 class="card-title">Rating :</h5> -->
+                        <p class="lead">{{comment.comment}}</p>
+                        <p class="card-text">{{comment.timestamp}}</p>
+                    </div>
+                    </div>
+                {% endfor %}
+
+            {% else %}
+                <div class="text-center">
+                    <!-- Text -->
+                    <br> <br> 
+                    <p class="lead">댓글이 없습니다.</p>
+                </div>
+            {% endif %}
+        </div>
+        <!-- End displaying comments -->
+        
+        {% if user.username != product.seller %}
+            <!-- Displaying comments-->
+            <div class="jumbotron text-center">
+
+                <!-- Title -->
+                <h2 class="card-title h2">댓글 남기기</h2>
+                
+                <form action="{% url 'addcomment' product.id %}" method="POST">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <textarea class="form-control" name="comment" rows="4" placeholder="댓글"></textarea>
+                    </div>
+                    <p align="justify"><input class="btn btn-primary" type="submit" value="등록하기"></p>
+                </form>
+            </div>
+            <!-- End add comments -->
+        {% endif %}
+
+        
+
+        {% if user.username == product.seller %}
+            <a href="{% url 'closebid' product.id %}" class="btn btn btn-outline-primary"> 입찰 종료 </a>
+        {% endif %}
+
+    </div>
+{% endblock %}
