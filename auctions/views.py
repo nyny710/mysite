@@ -14,6 +14,12 @@ from .models import *
 def index(request):
     return render(request, "auctions/index.html")
 
+def intro(request):
+    return render(request, "auctions/intro.html")
+
+def match(request):
+    return render(request, "auctions/match.html")
+
 
 # this is the view for login
 def login_view(request):
@@ -171,7 +177,7 @@ def viewlisting(request, product_id):
         item = Listing.objects.get(id=product_id)
         newbid = int(request.POST.get('newbid'))
         # checking if the newbid is greater than or equal to current bid
-        if item.starting_bid >= newbid:
+        if item.starting_bid <= newbid:
             product = Listing.objects.get(id=product_id)
             return render(request, "auctions/viewlisting.html", {
                 "product": product,

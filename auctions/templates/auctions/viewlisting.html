@@ -27,7 +27,7 @@
             <a href="{% url 'addtowatchlist' product.id %}" class="btn btn-danger btn-lg" name="remove">찜목록에서 지우기</a>
         {% else %}
             <!-- <input type="button" class="btn btn-success btn-lg" name="addto" placeholder="Add to Watchlist"> -->
-            <a href="{% url 'addtowatchlist' product.id %}" class="btn btn-success btn-lg" name="addto">찜목록에 추가하기</a>
+            <a href="{% url 'addtowatchlist' product.id %}" class="btn btn-outline-success" name="addto">찜목록에 추가하기</a>
         {% endif %}
         <br> <br>
         {% if user.username != product.seller %}
@@ -95,10 +95,10 @@
             <!-- End add comments -->
         {% endif %}
 
-
+        
 
         {% if user.username == product.seller %}
-            <a href="{% url 'closebid' product.id %}" class="btn btn-info btn-lg"> 매칭종료 </a>
+            <a href="{% url 'closebid' product.id %}" class="btn btn btn-outline-primary"> 입찰 종료 </a>
         {% endif %}
 
     </div>
