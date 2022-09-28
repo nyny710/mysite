@@ -136,16 +136,16 @@ def createlisting(request):
         # assigning the data submitted via form to the object
         item.seller = request.user.username
         item.title = request.POST.get('title')
-        item.description = request.POST.get('description')
-        item.category = request.POST.get('category')
         item.address = request.POST.get('address')
         item.address_detail = request.POST.get('address_detail')
+        item.category = request.POST.get('category')
+        item.description = request.POST.get('description')
         item.starting_bid = request.POST.get('starting_bid')
         # submitting data of the image link is optional
         if request.POST.get('image_link'):
             item.image_link = request.POST.get('image_link')
         else:
-            item.image_link = "https://www.aust-biosearch.com.au/wp-content/themes/titan/images/noimage.gif"
+            item.image_link = "../../static/auctions/img/forcreate.svg" #첨부X 시 이미지
         # saving the data into the database
         item.save()
         # retrieving the new products list after adding and displaying
@@ -181,7 +181,7 @@ def viewlisting(request, product_id):
             product = Listing.objects.get(id=product_id)
             return render(request, "auctions/viewlisting.html", {
                 "product": product,
-                "message": "Your Bid should be higher than the Current one.",
+                "message": "제시된 가격보다 낮은 금액을 입력해주세요.",
                 "msg_type": "danger",
                 "comments": comments
             })
@@ -202,7 +202,7 @@ def viewlisting(request, product_id):
             product = Listing.objects.get(id=product_id)
             return render(request, "auctions/viewlisting.html", {
                 "product": product,
-                "message": "Your Bid is added.",
+                "message": "입찰금액이 입력됐습니다.",
                 "msg_type": "success",
                 "comments": comments
             })
@@ -298,7 +298,7 @@ def closebid(request, product_id):
     listobj = Listing.objects.get(id=product_id)
     obj = get_object_or_None(Bid, listingid=product_id)
     if not obj:
-        message = "Deleting Bid"
+        message = "요청을 마감하였습니다."
         msg_type = "danger"
     else:
         bidobj = Bid.objects.get(listingid=product_id)
@@ -308,7 +308,7 @@ def closebid(request, product_id):
         winobj.winprice = bidobj.bid
         winobj.title = bidobj.title
         winobj.save()
-        message = "Bid Closed"
+        message = "요청이 마감되었습니다."
         msg_type = "success"
         # removing from Bid
         bidobj.delete()

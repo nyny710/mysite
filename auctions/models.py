@@ -11,6 +11,8 @@ class User(AbstractUser):
 class Listing(models.Model):
     seller = models.CharField(max_length=64)
     title = models.CharField(max_length=64)
+    address = models.CharField(max_length=64)
+    address_detail = models.CharField(max_length=64)
     description = models.TextField()
     starting_bid = models.IntegerField()
     category = models.CharField(max_length=64)

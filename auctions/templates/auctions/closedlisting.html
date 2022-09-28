@@ -4,7 +4,6 @@
     <br>
     {% if message %}
         <div class="alert alert-danger">{{ message }}</div>
-
     {% endif %}
     <!-- Jumbotron -->
     <div class="jumbotron text-center">
@@ -38,11 +37,11 @@
                                 <!-- winner -->
                                 <p class="font-weight-bold">입찰자 : {{product.winner}} <br> </p>
 
-                                <p class="font-weight-bold"><strong>지역 : </strong>{{product.address}} </p>
-                                <p class="font-weight-bold"><strong>요청사항 : </strong> {{product.description}}</p>
-                                <p class="font-weight-bold"><strong>전화번호 : </strong>{{product.phonenumber}} </p>
+                                <p class="font-weight-weight">지역 : {{product.address}} <br></p>
+                                <p class="font-weight-weight">요청사항 :  {{product.description}}</p>
+                                <p class="font-weight-weight">전화번호 : {{product.phonenumber}} </p>
                                 <!-- Price -->
-                                <p class="font-weight-bold">입찰금액 : {{product.winprice}}$ <br> </p>
+                                <p class="font-weight-bold">{{product.winprice}} 원 <br> </p>
                             </div>
                         </div>
                         <!-- Card Regular -->
