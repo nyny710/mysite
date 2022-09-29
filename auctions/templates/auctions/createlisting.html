@@ -21,9 +21,7 @@
     
                 <form action="{% url 'createlisting' %}" method="POST">
                     {% csrf_token %}
-                    <div class="form-group">
-                        <input class="form-control" autofocus type="text" name="title" placeholder="제목">
-                    </div>
+
                     <div class="form-group">
                         <select class="form-control" name="address" placeholder="카테고리" required>
                             <option value="">주소를 선택하세요</option>
@@ -60,9 +58,6 @@
                     </div>
                        <div class="form-group">
                         <textarea class="form-control" name="description" rows="4" placeholder="요청사항"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <input class="form-control" type="text" name="image_link" placeholder="물품 이미지(선택사항)">
                     </div>
 
                     <input class="btn btn btn-outline-primary" type="submit" value="등록하기">

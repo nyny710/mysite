@@ -145,7 +145,7 @@ def createlisting(request):
         if request.POST.get('image_link'):
             item.image_link = request.POST.get('image_link')
         else:
-            item.image_link = "../../static/auctions/img/forcreate.svg" #첨부X 시 이미지
+            item.image_link = "https://www.aust-biosearch.com.au/wp-content/themes/titan/images/noimage.gif" #첨부X 시 이미지
         # saving the data into the database
         item.save()
         # retrieving the new products list after adding and displaying
