@@ -11,6 +11,8 @@ class User(AbstractUser):
 class Listing(models.Model):
     seller = models.CharField(max_length=64)
     title = models.CharField(max_length=64)
+    address_1 = models.CharField(max_length=64)
+    address_detail_1 = models.CharField(max_length=64)
     address = models.CharField(max_length=64)
     address_detail = models.CharField(max_length=64)
     description = models.TextField()
@@ -24,7 +26,7 @@ class Listing(models.Model):
 # model for bids
 class Bid(models.Model):
     user = models.CharField(max_length=64)
-    title = models.CharField(max_length=64)
+    address = models.CharField(max_length=64)
     listingid = models.IntegerField()
     bid = models.IntegerField()
 
@@ -49,4 +51,8 @@ class Winner(models.Model):
     winner = models.CharField(max_length=64)
     listingid = models.IntegerField()
     winprice = models.IntegerField()
-    title = models.CharField(max_length=64, null=True)
+    address_1 = models.CharField(max_length=64)
+    address_detail_1 = models.CharField(max_length=64)
+    address = models.CharField(max_length=64)
+    address_detail = models.CharField(max_length=64)
+    description = models.TextField()

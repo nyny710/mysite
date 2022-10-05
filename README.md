@@ -1,8 +1,8 @@
-# CS50w Project-2 Commerce
+# Team.Dealivery
 
-This is the project I made which is an e-commerce auction site that will allow users to post auction listings, place bids on listings, comment on those listings, and add listings to a watchlist.
+Dealivery는 Django를 활용한 퀵 서비스 매칭 웹 서비스입니다.
 
-# Specification
+# 기능 설명
 
 These are the specifications given to me in the course CS50’s Web Programming with Python and JavaScript:
 

@@ -5,18 +5,23 @@
     <div class="jumbotron text-center">
         <br>
         <br>
-        <h1><strong>환영 안합니다!</strong></h1>
-        <h1>Dealivery 퀵 서비스 아닙니다!</h1> <br>
+        <h1><strong>[ 의뢰인 이용방법 ]</strong></h1>
+        <p class="blue-text my-4 font-weight-bold" align="center">요청 방법 안내입니다.</p>
         <br>
-        <img src="../../static/auctions/img/logo2.png" alt="indeximage" style="height: 200px; width:1000px; left: 400px;"  class="embed-responsive"> <br> <br> <br>
-        <p class="lead" align="center">안녕?</p>
-        <p class="lead" align="center">어쩌고.</p>
-        <p class="lead" align="center">요청을 통해 퀵 서비스를 요청하고 접수를 통해 퀵 서비스를 접수해보세요.</p>
+        <img src="../../static/auctions/img/요청정보1.png" alt="indeximage" style="height: 910px; width:730px; left: 515px;"  class="embed-responsive"> <br> <br> <br>
+        <hr class="my-4">
+        <br>
+        <h1><strong>[ 접수자 이용방법 ]</strong></h1>
+        <p class="blue-text my-4 font-weight-bold" align="center">접수 방법 안내입니다.</p>
+        <img src="../../static/auctions/img/접수정보.png" alt="indeximage" style="height: 910px; width:730px; left: 515px;"  class="embed-responsive"> <br> <br> <br>
         <br>
         
         
         {% if user.is_authenticated %}
-            <a href="{% url 'activelisting' %}" class="btn btn btn-outline-primary">올라온 퀵 목록</a>
+        <hr class="my-4">
+         <h1><strong>[ 서비스 이용 하러가기 ]</strong></h1>
+        <br>
+            <a href="{% url 'activelisting' %}" class="btn btn btn-outline-primary">실시간 요청 목록</a>
             <a href="{% url 'createlisting' %}" class="btn btn-outline-warning">퀵 서비스 요청</a>
         {% else %}
             <a href="{% url 'register' %}" class="btn btn btn-outline-primary">회원가입</a>

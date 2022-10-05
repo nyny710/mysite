@@ -35,7 +35,7 @@ def login_view(request):
         # if not authenticated
         else:
             return render(request, "auctions/login.html", {
-                "message": "Invalid username and/or password.",
+                "message": "아이디 혹은 비밀번호가 틀렸습니다.",
                 "msg_type": "danger"
             })
     # if GET request
@@ -54,22 +54,23 @@ def register(request):
     if request.method == "POST":
         username = request.POST["username"]
         email = request.POST["email"]
+        phone_number = request.POST["phone_number"]
         # Ensure password matches confirmation
         password = request.POST["password"]
         confirmation = request.POST["confirmation"]
         if password != confirmation:
             return render(request, "auctions/register.html", {
-                "message": "Passwords must match.",
+                "message": "비밀번호가 일치하지 않습니다.",
                 "msg_type": "danger"
             })
         if not username:
             return render(request, "auctions/register.html", {
-                "message": "Please enter your username.",
+                "message": "아이디를 입력해주세요.",
                 "msg_type": "danger"
             })
         if not email:
             return render(request, "auctions/register.html", {
-                "message": "Please enter your email.",
+                "message": "이메일을 입력해주세요.",
                 "msg_type": "danger"
             })
         # Attempt to create new user
@@ -78,7 +79,7 @@ def register(request):
             user.save()
         except IntegrityError:
             return render(request, "auctions/register.html", {
-                "message": "Username already taken.",
+                "message": "존재하는 아이디입니다.",
                 "msg_type": "danger"
             })
         login(request, user)
@@ -135,9 +136,10 @@ def createlisting(request):
         item = Listing()
         # assigning the data submitted via form to the object
         item.seller = request.user.username
-        item.title = request.POST.get('title')
         item.address = request.POST.get('address')
         item.address_detail = request.POST.get('address_detail')
+        item.address_1 = request.POST.get('address_1')
+        item.address_detail_1 = request.POST.get('address_detail_1')
         item.category = request.POST.get('category')
         item.description = request.POST.get('description')
         item.starting_bid = request.POST.get('starting_bid')
@@ -145,7 +147,7 @@ def createlisting(request):
         if request.POST.get('image_link'):
             item.image_link = request.POST.get('image_link')
         else:
-            item.image_link = "https://www.aust-biosearch.com.au/wp-content/themes/titan/images/noimage.gif" #첨부X 시 이미지
+            item.image_link = "https://www.aust-biosearch.com.au/wp-content/themes/titan/images/noimage.gif"
         # saving the data into the database
         item.save()
         # retrieving the new products list after adding and displaying
@@ -306,7 +308,6 @@ def closebid(request, product_id):
         winobj.winner = bidobj.user
         winobj.listingid = product_id
         winobj.winprice = bidobj.bid
-        winobj.title = bidobj.title
         winobj.save()
         message = "요청이 마감되었습니다."
         msg_type = "success"
@@ -350,3 +351,4 @@ def closedlisting(request):
         "products": winners,
         "empty": empty
     })
+

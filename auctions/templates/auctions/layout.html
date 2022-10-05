@@ -12,7 +12,8 @@
         <!-- Font Awesome -->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
         <!-- Google Fonts -->
-        <link href="https://webfontworld.github.io/NexonLv2Gothic/NexonLv2Gothic.css" rel="stylesheet">
+        <link href="https://webfontworld.github.io/gmarket/GmarketSans.css" rel="stylesheet">
+        <style> *{ font-family: 'GmarketSans'; }</style>
         <!-- Bootstrap core CSS -->
         <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
         <!-- Material Design Bootstrap -->
@@ -53,7 +54,7 @@
                 <ul class="dropdown-menu" text-align ="center" aria-labelledby="navbarDropdown" >
                   <li><a class="dropdown-item" href="{% url 'activelisting' %}">실시간 요청 목록</a></li>
                   <li><a class="dropdown-item" href="{% url 'createlisting' %}">요청하기</a></li>
-                    <li><a class="dropdown-item" href="{% url 'closedlisting' %}">매칭 현황</a></li>
+                    <li><a class="dropdown-item" href="{% url 'closedlisting' %}">매칭 확인</a></li>
 
 
                 </ul>
@@ -77,15 +78,11 @@
                             <span class="position-absolute top-0 start-100 translate-middle badge border border-light rounded-circle bg-danger p-2">
                                 <span class="visually-hidden">unread messages</span></span>
                             </button>
-
-
                          <a tabindex="0" class="btn btn-lg btn-danger" role="button" data-bs-toggle="popover" data-bs-trigger="focus" title="Dismissible popover" data-bs-content="And here's some amazing content. It's very engaging. Right?">Dismissible popover</a>
-
                         <p>
                 <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Link with href  </a>
                         <div class="collapse" id="collapseExample"><div class="card card-body">매칭이 완료되었습니다. 확인하세요.</div>
                     </div>
-
                         <div class="alert alert-warning alert-dismissible fade show" role="alert">매칭이 완료되었습니다. 확인하세요.
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div> -->
@@ -94,7 +91,6 @@
   <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
     알림
   </a>
-
 <div class="collapse" id="collapseExample">
   <div class="card card-body">
     뿡
@@ -102,9 +98,12 @@
 </div>
 </div>-->
 
-                        <button type="button" class="btn btn-secondary" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-content="Bottom popover">
-  Popover on bottom
-</button>
+
+
+
+
+    <button type="button" class="btn btn-secondary" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-content="Bottom popover">
+                            알림</button>
 
 
 
@@ -129,7 +128,7 @@
             </div>
         </nav>
         <!-- end navbar  -->
-        <br> 
+        <br>
 
         <div class="nonlayout" id="top">
             {% block body %}
@@ -140,42 +139,13 @@
         <footer class="page-footer font-weight-bolder special-color-main1 pt-4">
 
             <!-- Footer Elements -->
-            <div class="container" >
-        
-            <!-- Social buttons -->
-            <ul class="list-unstyled list-inline text-center">
-                <li class="list-inline-item">
-                    <!--Facebook-->
-                    <a class="btn-floating btn-lg btn-fb" type="button" role="button" href="https://www.facebook.com/smarty.saisumanth" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                </li>
-                <li class="list-inline-item">
-                    <!--Twitter-->
-                    <a class="btn-floating btn-lg btn-tw" type="button" role="button" href="https://twitter.com/sumanth_98?s=09" target="_blank"><i class="fab fa-twitter"></i></a>
-                </li>
-                <li class="list-inline-item">
-                    <!--Linkedin-->
-                    <a class="btn-floating btn-lg btn-li" type="button" role="button" href="https://www.linkedin.com/in/sai-sumanth-talluri-3b7811141" target="_blank"><i class="fab fa-linkedin-in" ></i></a>
-                </li>
-                <li class="list-inline-item">
-                    <!-- Insta -->
-                    <a class="btn-floating btn-lg btn-ins" type="button" role="button" href="https://instagram.com/the.cs.geek?igshid=1mamru7aa53b2" target="_blank"><i class="fab fa-instagram" ></i></a>
-                </li>
-                <li class="list-inline-item">
-                    <!--Github-->
-                    <a class="btn-floating btn-lg btn-git" type="button" role="button" href="https://github.com/Sumanth-Talluri" target="_blank"><i class="fab fa-github" ></i></a>
-                </li>
-            </ul>
-            <!-- Social buttons -->
-        
-            </div>
-            <!-- Footer Elements -->
-        
+
             <!-- Copyright -->
-            <div class="footer-copyright text-center py-3">개발되었습니다 <i class="fa fa-heart" style="color: red; padding: 0 5px;" aria-hidden="true"></i> by
-            <a href="https://mdbootstrap.com/"> Team.Dealivery </a>
+            <div class="footer-copyright black-text my-0 text-center py-3">Developed <i class="fa fa-bolt" style="color: orange; padding: 0 5px;" aria-hidden="true"></i> by
+            <a href="#"style="color : blue"> Team.Dealivery </a>
             </div>
             <!-- Copyright -->
-        
+
                 </footer>
         <!-- Footer -->
 

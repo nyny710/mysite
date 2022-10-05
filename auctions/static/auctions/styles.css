@@ -3,14 +3,13 @@
 	padding-right: 2%;
 }
 
-#body{
-font-family: 'NexonLv2Gothic';
-}
-
 .dropdown-menu{
 text-align: center;
 }
 
+.h1{
+animation : slide 2s;
+}
 
 @keyframes slide{
 from{

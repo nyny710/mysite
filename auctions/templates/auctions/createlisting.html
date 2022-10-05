@@ -10,21 +10,42 @@
         <div class="jumbotron text-center lighten-4">
 
             <!-- Title -->
-            <br><h1><strong>딜리버리 요청하기</strong></h1> <br> <br>
+            <br><h1><strong>퀵 요청하기</strong></h1> <br> <br>
             <br>
-            <img src="../../static/auctions/img/forcreate.svg" alt="indeximage" style="height: 350px;" class="embed-responsive">
+            <img src="../../static/auctions/img/request.svg" alt="indeximage" style="height: 600px;" class="embed-responsive">
             <br> <br> <br>
             <!-- <hr class="my-4 pb-2"> -->
-    
+
             <!-- Grid row -->
-            <div class="text-left">
-    
+            <div class="text-left" >
+
                 <form action="{% url 'createlisting' %}" method="POST">
                     {% csrf_token %}
-
+                    <div class="form-group">
+                        <select class="form-control" name="address_1" placeholder="카테고리" required>
+                            <option value="">픽업 지역을 선택하세요.</option>
+                            <option value="서울">서울특별시</option>
+                            <option value="경기도">경기도</option>
+                            <option value="충청남도">충청남도</option>
+                            <option value="충청북도">충청북도</option>
+                            <option value="대전">대전광역시</option>
+                            <option value="대구">대구광역시</option>
+                            <option value="세종">세종특별시</option>
+                            <option value="경상북도">경상북도</option>
+                            <option value="경상남도">경상남도</option>
+                            <option value="전라북도">전라북도</option>
+                            <option value="전라남도">전라남도</option>
+                            <option value="광주">광주광역시</option>
+                            <option value="울산">울산광역시</option>
+                            <option value="제주">제주특별자치도</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" autofocus type="text" name="address_detail_1" placeholder="픽업 상세주소">
+                    </div>
                     <div class="form-group">
                         <select class="form-control" name="address" placeholder="카테고리" required>
-                            <option value="">주소를 선택하세요</option>
+                            <option value="">배송 지역을 선택하세요</option>
                             <option value="서울">서울특별시</option>
                             <option value="경기도">경기도</option>
                             <option value="충청남도">충청남도</option>
@@ -43,11 +64,11 @@
                     </div>
 
                     <div class="form-group">
-                        <input class="form-control" autofocus type="text" name="address_detail" placeholder="상세주소">
+                        <input class="form-control" autofocus type="text" name="address_detail" placeholder="배송 상세주소">
                     </div>
                     <div class="form-group">
                         <select class="form-control" name="category" placeholder="카테고리" required>
-                            <option value="">카테고리를 선택하세요</option>
+                            <option value="">물품 카테고리를 선택하세요</option>
                             <option value="일반">일반</option>
                             <option value="파손">파손</option>
                             <option value="신선">신선</option>

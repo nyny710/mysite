@@ -10,14 +10,16 @@
 
         <br>
         <br>
-        <h1><strong>{{product.title}}</strong></h1> <br>
+        <h1><strong>{{product.address}}</strong></h1> <br>
         <br>
         <img src="{{product.image_link}}" alt="indeximage" style="height: 350px;" class="embed-responsive"> <br> <br> <br> 
         <p class="lead" align="justify"><strong>요청사항 : </strong> {{product.description}}</p>
-              <p class="lead" align="justify"><strong>지역 : </strong>{{product.address}}</p>
-        <p class="lead" align="justify"><strong>상세주소 : </strong>{{product.address_detail}}</p>
-            <p class="lead" align="justify"><strong>카테고리 : </strong>{{product.category}}</p>
-        <p class="lead" align="justify"><strong>희망가격 : </strong>{{product.starting_bid}} 원</p>
+        <p class="lead" align="justify"><strong>픽업 지역 : </strong>{{product.address_1}}</p>
+        <p class="lead" align="justify"><strong>픽업 상세주소 : </strong>{{product.address_detail_1}}</p>
+        <p class="lead" align="justify"><strong>배송 지역 : </strong>{{product.address}}</p>
+        <p class="lead" align="justify"><strong>배송 상세주소 : </strong>{{product.address_detail}}</p>
+        <p class="lead" align="justify"><strong>카테고리 : </strong>{{product.category}}</p>
+        <p class="lead" align="justify"><strong>희망가격 : </strong>{{product.starting_bid}}원</p>
         <p class="lead" align="justify"><strong>요청자 : </strong>{{product.seller}}</p>
         <p class="lead" align="justify"><strong>등록된 시간 : </strong>{{product.created_at}}</p>
         <br>
