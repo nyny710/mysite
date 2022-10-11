@@ -10,7 +10,7 @@
         <!-- Title -->
         <h2 class="card-title h2">실시간 요청목록</h2>
         <!-- Subtitle -->
-        <p class="black-text my-4 font-weight-bold">사용자가 요청한 딜리버리 목록입니다.</p>
+        <p class="black-text my-4 font-weight-bold">의뢰자가 요청한 딜리버리 목록입니다.</p>
         <!-- Grid row -->
         <div class="row d-flex justify-content-around">
             <!-- Grid column -->
@@ -25,13 +25,21 @@
                         <br>
                         <!-- Card Regular -->
                         <div class="card card-cascade" >
+                            <div style="text-align : center; align-self: center;height: 200px;width:200px;" >
                             <!-- Card image -->
-                            <div class="view view-cascade overlay " >
-                                <img class="card-img-top" src="{{product.image_link}}" alt="Card image cap" style="height: 200px;">
+                            <div class="view view-cascade overlay" >
+                                {% if product.category == "신선" %}
+                                <img class="card-img-top" src="../../static/auctions/img/fresh1.svg" alt="Card image cap" >
+                                {% elif product.category == "파손" %}
+                                <img class="card-img-top" src="../../static/auctions/img/fragile1.svg" alt="Card image cap" >
+                                {% elif product.category == "일반" %}
+                                <img class="card-img-top" src="../../static/auctions/img/regular1.svg" alt="Card image cap">
+                                {% endif %}
                                 <a>
                                     <div class="mask rgba-white-slight"></div>
                                 </a>
                             </div>
+                                </div>
                             <!-- Card content -->
                             <div class="card-body card-body-cascade text-center">
                                 <!-- Title -->

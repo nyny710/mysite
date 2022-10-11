@@ -12,7 +12,22 @@
         <br>
         <h1><strong>{{product.address}}</strong></h1> <br>
         <br>
-        <img src="{{product.image_link}}" alt="indeximage" style="height: 350px;" class="embed-responsive"> <br> <br> <br> 
+        <div style="text-align : center; align-self: center;height: 200px;width:200px;" >
+                            <!-- Card image -->
+                            <div class="view view-cascade overlay" >
+                                {% if product.category == "신선" %}
+                                <img class="card-img-top" src="../../static/auctions/img/fresh1.svg" alt="Card image cap"  >
+                                {% elif product.category == "파손" %}
+                                <img class="card-img-top" src="../../static/auctions/img/fragile1.svg" alt="Card image cap" >
+                                {% elif product.category == "일반" %}
+                                <img class="card-img-top" src="../../static/auctions/img/regular1.svg" alt="Card image cap">
+                                {% endif %}
+                                <a>
+                                    <div class="mask rgba-white-slight"></div>
+                                </a>
+                            </div>
+                                </div>
+            <br> <br> <br>
         <p class="lead" align="justify"><strong>요청사항 : </strong> {{product.description}}</p>
         <p class="lead" align="justify"><strong>픽업 지역 : </strong>{{product.address_1}}</p>
         <p class="lead" align="justify"><strong>픽업 상세주소 : </strong>{{product.address_detail_1}}</p>

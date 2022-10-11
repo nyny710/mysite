@@ -300,7 +300,7 @@ def closebid(request, product_id):
     listobj = Listing.objects.get(id=product_id)
     obj = get_object_or_None(Bid, listingid=product_id)
     if not obj:
-        message = "요청을 마감하였습니다."
+        message = "요청을 삭제하였습니다."
         msg_type = "danger"
     else:
         bidobj = Bid.objects.get(listingid=product_id)
@@ -351,4 +351,3 @@ def closedlisting(request):
         "products": winners,
         "empty": empty
     })
-
