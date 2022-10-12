@@ -75,7 +75,7 @@ def register(request):
             })
         # Attempt to create new user
         try:
-            user = User.objects.create_user(username, email, password)
+            user = User.objects.create_user(username, email, password,phone_number)
             user.save()
         except IntegrityError:
             return render(request, "auctions/register.html", {
@@ -171,7 +171,6 @@ def categories(request):
 
 
 # view to display individual listing
-@login_required(login_url='/login')
 def viewlisting(request, product_id):
     # if the user submits his bid
     comments = Comment.objects.filter(listingid=product_id)
@@ -184,6 +183,14 @@ def viewlisting(request, product_id):
             return render(request, "auctions/viewlisting.html", {
                 "product": product,
                 "message": "제시된 가격보다 낮은 금액을 입력해주세요.",
+                "msg_type": "danger",
+                "comments": comments
+            })
+        if newbid < 500:
+            product = Listing.objects.get(id=product_id)
+            return render(request, "auctions/viewlisting.html", {
+                "product": product,
+                "message": "최소 500원 이상 입력해주세요.",
                 "msg_type": "danger",
                 "comments": comments
             })
@@ -350,4 +357,18 @@ def closedlisting(request):
     return render(request, "auctions/closedlisting.html", {
         "products": winners,
         "empty": empty
+    })
+
+@login_required(login_url='/login')
+def removecomment(request, product_id, comment_id):
+    comments = Comment.objects.filter(listingid=product_id)
+    product = Listing.objects.get(id=product_id)
+    added = Watchlist.objects.filter(listingid=product_id, user=request.user.username)
+    if Comment.objects.filter(user=request.user.username):
+        commentobj = Comment.objects.filter(id=comment_id)
+        commentobj.delete()
+    return render(request, "auctions/viewlisting.html", {
+        "product": product,
+        "added": added,
+        "comments": comments
     })

@@ -7,7 +7,7 @@
         <!-- Title -->
         <h2 class="card-title h2">마이페이지</h2>
         <!-- Subtitle -->
-        <p class="blue-text my-4 font-weight-bold">계정 정보와 과거 매칭 기록을 찾을 수 있습니다.</p>
+        <p class="blue-text my-4 font-weight-bold">계정 정보와 매칭현황을 확인할 수 있습니다.</p>
         <!-- Grid row -->
         <div class="row d-flex justify-content-center">
             <!-- Grid column -->
@@ -33,6 +33,7 @@
                                             
                                             <h4 class="font-weight-bold">{{request.user.username}}</h4>
                                             <h6 class="font-weight-bold my-3">{{request.user.email}}</h6>
+                                            <h6 class="font-weight-bold my-3">{{request.user.phone_number}}</h6>
                                         </div>
                                     </div>
                                     <!--First slide-->
@@ -57,7 +58,7 @@
             {% for item in product_list %}
                 <!-- Grid row -->
                 <br> <br>
-                <div class="card text-center" style = "width:40%; left:525px;">
+                <div class="card text-center" style = "width:40%; left:30%;">
                     <a href="{% url 'viewlisting' item.id %}"><h5 class="card-header h3 ">{{item.address}}</h5></a>
                     <div class="card-body">
                         <h5 class="card-title">의뢰자 : {{item.seller}}</h5>
@@ -79,16 +80,16 @@
     <!-- Jumbotron -->
     <div class="jumbotron text-center">
         <!-- Title -->
-        <h2 class="card-title h2">매칭 히스토리</h2>
+        <h2 class="card-title h2">매칭 현황</h2>
         <!-- Subtitle -->
-        <p class="black-text my-4 font-weight-bold">주소 및 전화번호는 히스토리에 남겨지지 않습니다.</p>
+        <p class="black-text my-4 font-weight-bold">현재 매칭된 정보를 확인하세요.</p>
         <!-- Grid row -->
         <div class="row d-flex justify-content-center">
             <!-- Grid column -->
             <div class="col-xl-7 pb-2">
                 {% if not products %}
                     <br>
-                    <h3>과거 매칭기록이 없습니다.</h3>
+                    <h3>매칭기록이 없습니다.</h3>
                 {% else %}
                     {% for product in products %}
                         <br>
@@ -98,13 +99,17 @@
                             <div class="card-body card-body-cascade text-center">
                                 <!-- Title -->
                                 <h4 class="card-title"><strong>{{product.address}}</strong></h4>
-                                <p class="font-weight-bold">History <br> </p>
                                 <!-- seller -->
                                 <p class="font-weight-bold">의뢰자 : {{product.owner}} <br> </p>
                                 <!-- winner -->
                                 <p class="font-weight-bold">접수인 : {{product.winner}} <br> </p>
-                                <!-- Price -->
-                                <p class="font-weight-bold">{{product.winprice}}원 <br> </p>
+                                <p class="font-weight-bold">픽업 지역 : {{product.address_1}} </p>
+                                <p class="font-weight-bold">픽업 상세주소 : {{product.address_detail_1}} </p>
+                                <p class="font-weight-bold">배송 지역 : {{product.address}} </p>
+                                <p class="font-weight-bold">배송 상세주소 : {{product.address_detail}} </p>
+                                <p class="font-weight-bold">요청사항 :  {{product.description}}</p>
+                                <p class="font-weight-bold">전화번호 : {{product.phone_number}} </p>
+                                <p class="font-weight-bold">접수 가격: {{product.winprice}}원 <br> </p>
                             </div>
                         </div>
                         <!-- Card Regular -->

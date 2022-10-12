@@ -12,15 +12,15 @@
         <br>
         <h1><strong>{{product.address}}</strong></h1> <br>
         <br>
-        <div style="text-align : center; align-self: center;height: 200px;width:200px;" >
+        <div class="text-center" style="text-align:center;padding:3% 10%; left:50%;">
                             <!-- Card image -->
                             <div class="view view-cascade overlay" >
                                 {% if product.category == "신선" %}
-                                <img class="card-img-top" src="../../static/auctions/img/fresh1.svg" alt="Card image cap"  >
+                                <img class="card-img-top" src="../../static/auctions/img/fresh1.svg" alt="Card image cap" style="height: 30%; width:30%;left:34.5%;"  >
                                 {% elif product.category == "파손" %}
-                                <img class="card-img-top" src="../../static/auctions/img/fragile1.svg" alt="Card image cap" >
+                                <img class="card-img-top" src="../../static/auctions/img/fragile1.svg" alt="Card image cap" style="height: 30%; width:30%;left:34.5%;">
                                 {% elif product.category == "일반" %}
-                                <img class="card-img-top" src="../../static/auctions/img/regular1.svg" alt="Card image cap">
+                                <img class="card-img-top" src="../../static/auctions/img/regular1.svg" alt="Card image cap" style="height: 30%; width:30%;left:34.5%;">
                                 {% endif %}
                                 <a>
                                     <div class="mask rgba-white-slight"></div>
@@ -54,7 +54,7 @@
                 <div class="form-group">
                     <input class="form-control" type="text" name="newbid" placeholder="입찰 할 금액을 적어주세요">
                 </div>
-                <p align="justify"><input class="btn btn-primary" type="submit" value="보내기"></p>
+                <p align="center"><input class="btn btn btn-outline-primary" type="submit" value="보내기"></p>
             </form>
         {% endif %}
         
@@ -74,15 +74,20 @@
                 {% for comment in comments %}
                     <br>
                     <!-- Grid row -->
-                    <div class="card text-left">
+                    <div class="card text-center"style = "width:40%; left:30%;">
                     <h5 class="card-header h5">{{comment.user}}</h5>
                     <div class="card-body">
                         <!-- <h5 class="card-title">Rating :</h5> -->
                         <p class="lead">{{comment.comment}}</p>
                         <p class="card-text">{{comment.timestamp}}</p>
+                        {% if  user.username == comment.user %}
+                            <a href="{% url 'removecomment' product.id comment.id %}">삭제</a>
+                        {% endif %}
+
                     </div>
                     </div>
                 {% endfor %}
+
 
             {% else %}
                 <div class="text-center">
@@ -106,7 +111,7 @@
                     <div class="form-group">
                         <textarea class="form-control" name="comment" rows="4" placeholder="댓글"></textarea>
                     </div>
-                    <p align="justify"><input class="btn btn-primary" type="submit" value="등록하기"></p>
+                    <p align="center"><input class="btn btn btn-outline-primary" type="submit" value="등록하기"></p>
                 </form>
             </div>
             <!-- End add comments -->
